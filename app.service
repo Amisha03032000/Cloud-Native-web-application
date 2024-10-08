@@ -1,0 +1,25 @@
+[Unit]
+Description=Amisha's CSYE 6225 Application 
+ConditionPathExists=/home/admin/webapp 
+After=network.target
+
+
+
+[Service]
+Type=simple
+User=csye6225
+Group=csye6225
+WorkingDirectory=/home/admin/webapp
+ExecStart=/usr/bin/node /home/admin/webapp/app.js
+EnvironmentFile=/home/admin/webapp/.env
+Restart=always
+RestartSec=3
+
+StandardOutput=journal
+StandardError=journal
+
+SyslogIdentifier=csye6225
+
+
+[Install]
+WantedBy=multi-user.target
